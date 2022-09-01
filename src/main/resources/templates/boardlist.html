@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" type="text/css" th:href="@{/style.css}">
+<head>
+	<meta charset="UTF-8">
+	<title>게시글</title>
+</head>
+<body>
+<div class="layout">
+	<table>
+		<thead>
+			<tr>
+				<th>글번호</th>
+				<th>제목</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="board : ${list}"> <!--boardcontroller에서 받아온list-->
+				<td th:text="${board.id}"></td> <!---->
+				<td th:text="${board.title}"></td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+</body>
+</html>
