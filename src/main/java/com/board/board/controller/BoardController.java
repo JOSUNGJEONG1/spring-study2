@@ -30,4 +30,16 @@ public class BoardController {
         model.addAttribute("list", boardService.boardList()); //반환 된 boardList를 "list"이름으로 받아넘긴다
         return "boardlist"; //return할 html 작성
     }
+
+    @GetMapping("/board/view")//localhost:8080/board/view?id=?
+    public String boardView(Model model, Long id){
+        model.addAttribute("board", boardService.boardview(id));
+        return "boardview";
+    }
+    @GetMapping("/board/delete")
+    public String boardDelete(Long id) {
+        boardService.boardDelete(id);
+
+        return "redirect:/board/list";
+    }
 }
