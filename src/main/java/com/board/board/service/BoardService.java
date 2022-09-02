@@ -3,10 +3,10 @@ package com.board.board.service;
 import com.board.board.domain.Board;
 import com.board.board.repository.BoardRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.multipart.MultipartFile;
-
 import java.io.File;
 import java.util.List;
 import java.util.UUID;
@@ -31,8 +31,8 @@ public class BoardService {
         boardRepository.save(board);
     }
     //글을 불러 올 메소드
-    public List<Board> boardList() {
-        return boardRepository.findAll();
+    public Page<Board> boardList(Pageable pageable) {
+        return boardRepository.findAll(pageable);
     }
 
     //특정 게시글
